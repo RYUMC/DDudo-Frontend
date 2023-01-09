@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../css/Login_page_background.css'
 import '../css/Login_page.css'
+import { Link } from 'react-router-dom';
 
 function Login_page(){
 
@@ -14,7 +15,7 @@ function Login_page(){
       <div className="Line"></div>
       <div className='register'>
         <span>회원가입</span>
-        <span className="register-button">〉</span>
+        <Link to="/register" className="register-button">〉</Link>
       </div>
     </div>
   )
