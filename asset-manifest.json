@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/myapp/static/css/main.5a72450d.css",
-    "main.js": "/myapp/static/js/main.515ca1bd.js",
-    "static/js/787.d3befce1.chunk.js": "/myapp/static/js/787.d3befce1.chunk.js",
-    "index.html": "/myapp/index.html",
-    "main.5a72450d.css.map": "/myapp/static/css/main.5a72450d.css.map",
-    "main.515ca1bd.js.map": "/myapp/static/js/main.515ca1bd.js.map",
-    "787.d3befce1.chunk.js.map": "/myapp/static/js/787.d3befce1.chunk.js.map"
+    "main.css": "/DDudo-Frontend/static/css/main.5a72450d.css",
+    "main.js": "/DDudo-Frontend/static/js/main.a123e7e9.js",
+    "static/js/787.d3befce1.chunk.js": "/DDudo-Frontend/static/js/787.d3befce1.chunk.js",
+    "index.html": "/DDudo-Frontend/index.html",
+    "main.5a72450d.css.map": "/DDudo-Frontend/static/css/main.5a72450d.css.map",
+    "main.a123e7e9.js.map": "/DDudo-Frontend/static/js/main.a123e7e9.js.map",
+    "787.d3befce1.chunk.js.map": "/DDudo-Frontend/static/js/787.d3befce1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5a72450d.css",
-    "static/js/main.515ca1bd.js"
+    "static/js/main.a123e7e9.js"
   ]
 }
