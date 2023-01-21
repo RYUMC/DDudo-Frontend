@@ -59,7 +59,7 @@
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
   border: 1.5px solid #18A0FB;
-  font-size: calc(0.5vw + 0.25vh + 2px);
+  font-size: calc(0.75vw + 0.25vh + 2px);
   height: 45%;
   width: 70%;
 }

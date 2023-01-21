@@ -54,8 +54,11 @@
   border: 1px solid #18A0FB;
   border-radius: 6px;
   text-align: center;
+  font-size: 1.5rem;
   margin: 1rem;
-  padding: 2.5% 7.5%
+  padding: 7.5px 17.5px;
+  text-decoration: none;
+  color: #18A0FB;
 }
 
 .next-button:hover{

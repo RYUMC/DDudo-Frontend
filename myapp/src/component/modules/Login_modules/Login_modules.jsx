@@ -8,11 +8,11 @@ export function Login_modules(){
       <div className='title'>DDudo</div>
       <input type='text' className="ID" placeholder='ID'/>
       <input type='password' className="Password" placeholder='Password' />
-      <div className='next-button'>〉</div>
+      <Link to='/DDUdo-Fronted/main-page' className='next-button'>〉</Link>
       <div className="Line"></div>
       <div className='register'>
         <span>회원가입</span>
-        <Link to="/register" className="register-button">〉</Link>
+        <Link to="/DDudo-Frontend/register" className="register-button">〉</Link>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ export function Register_modules(){
   return(
     <div className='Register_modules-containter'>
         <div className='regi_title'>Register</div>
-        <Link to = "/" className='previous_button'>〈</Link>
+        <Link to = "/DDudo-Frontend" className='previous_button'>〈</Link>
         <div className= 'regi_form'>
           <input type='text' placeholder='ID'/>
           <input type='password' placeholder='Password' />

@@ -1,0 +1,99 @@
+.line{
+  border: 1px solid black
+}
+
+.main_page-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-side{
+  flex-shrink: 0;
+  width: 30%;
+  height: 92%;
+  padding: 4% 2%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.left-side header{
+  height: 12.5%;
+}
+
+.week-calendar{
+  height: 15%;
+  margin: 10% 3% 0%;
+}
+
+.main-calendar{
+  height: 50%;
+  margin: 15% 7.5% 0;
+}
+
+.right-side{
+  width: 70%;
+  height: 94%;
+  padding: 3%;
+  background-color: #F6F6F6;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.right-side header{
+  height: 15%;
+  width: 100%;
+  padding: 1%;
+}
+
+.right-side header .nav{
+  height: 30%;
+  text-align: end;
+}
+
+.right-side header .title{
+  padding-left: 25px;
+  font-size: 3rem;
+}
+
+
+.left-side-schedule{
+  margin: 1% 0 0 5%;
+  width: 40%;
+  height: 84%;
+}
+.left-side-schedule::-webkit-scrollbar {
+  display: none;
+}
+
+.right-side-schedule{
+  margin: 1% 0 0 5%;
+  width: 49%;
+  height: 84%;
+}
+
+.navigation-img{
+  width: 55px;
+  height: 35px;
+}
+
+.navigation-img:hover{
+  cursor: pointer;
+}
+.hidden-navigation-background{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+}
+.hidden-naviagation{
+  float: right;
+  width: 300px;
+  height: 100%;
+}
