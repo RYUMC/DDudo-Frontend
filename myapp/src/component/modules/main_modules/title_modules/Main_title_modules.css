@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 .Main_title_modules-container
 {
+  width: 100%;
+  height: 100%;
   display: block;
 }
 
 .main_title{
     font-family: 'Inter';
     font-weight:bolder;
-    font-size: calc(1.5vw + 0.75vh + 16px);
+    font-size: calc(0.5vw + 0.25vh + 34px);
     margin: 0 auto;
   }
 

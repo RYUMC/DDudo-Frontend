@@ -13,6 +13,8 @@
 .left-side{
   flex-shrink: 0;
   width: 30%;
+  min-width: 430px;
+  max-width: 440px;
   height: 92%;
   padding: 4% 2%;
 
@@ -22,17 +24,18 @@
 }
 
 .left-side header{
+  padding: 3%;
   height: 12.5%;
 }
 
 .week-calendar{
-  height: 15%;
-  margin: 10% 3% 0%;
+  height: 12%;
+  margin: 5vh 5% 0%;
 }
 
 .main-calendar{
   height: 50%;
-  margin: 15% 7.5% 0;
+  margin: 7.5vh 7.5% 0;
 }
 
 .right-side{
