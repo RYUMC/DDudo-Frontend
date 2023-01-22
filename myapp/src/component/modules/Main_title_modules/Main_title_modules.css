@@ -1,0 +1,19 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+.Main_title_modules-container
+{
+  display: block;
+}
+
+.main_title{
+    font-family: 'Inter';
+    font-weight:bolder;
+    font-size: calc(1.5vw + 0.75vh + 16px);
+    margin: 0 auto;
+  }
+
+  .main_sub-title{
+    font-family: 'Inter';
+    color: #7C7A7A;
+    font-size: calc(0.75vw + 0.25vh + 5px);
+  }

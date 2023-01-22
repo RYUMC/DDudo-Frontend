@@ -4,6 +4,9 @@ import navigation from '../../assets/navigation.png'
 import { Main_navigation } from '../../component/modules/main_modules/navigation/Main_navigation'
 import { Time_schedule } from '../../component/modules/main_modules/time-schedule/Time_schedule'
 import { useState } from 'react'
+import { Main_title_modules } from '../../component/modules/Main_title_modules/Main_title_modules'
+import { Main_minical_modules } from '../../component/modules/Main_minical_modules/Main_minical_modules'
+import { Main_calendar_modules } from '../../component/modules/Main_calendar_modules/Main_calendar_modules'
 
 
 function Nav({openNavigation}){
@@ -28,13 +31,13 @@ export function Main_page(){
       {openNav && <Nav openNavigation={openNavigation}/>}
       <div className='left-side'>
         <header className='line'>
-          
+          <Main_title_modules/>
         </header>
         <div className='week-calendar line'>
-
+          <Main_minical_modules/>
         </div>
         <div className='main-calendar line'>
-
+          <Main_calendar_modules/>
         </div>
       </div>
       <div className='right-side'>
