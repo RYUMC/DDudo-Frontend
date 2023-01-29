@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 
 function CreateWeek(){
-    var currentDay = new Date();  
+    var currentDay = new Date();
     var theYear = currentDay.getFullYear();
     var theMonth = currentDay.getMonth();
     var theDate  = currentDay.getDate();
@@ -12,14 +12,24 @@ function CreateWeek(){
     var thisWeekLeft = [];
     var thisWeekRight = [];
 
+    const isSameDay = (target1, target2) => {
+        return target1.getFullYear() === target2.getFullYear() &&
+          target1.getMonth() === target2.getMonth() &&
+          target1.getDate()=== target2.getDate();
+      }
+
     for(var i=0; i<7; i++) {
         var resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek));
         var dd = resultDay.getDate();
         dd = String(dd).length === 1 ? '0' + dd : dd;
-        if(dd < theDate){
+        if(isSameDay(currentDay,resultDay))
+        {}
+        else if(currentDay > resultDay )
+        {
             thisWeekLeft.push(<span>{dd}</span>);
         }
-        else if(dd > theDate){
+        else if(currentDay < resultDay)
+        {
             thisWeekRight.push(<span>{dd}</span>);
         }
     }
