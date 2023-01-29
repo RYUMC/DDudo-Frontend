@@ -8,7 +8,7 @@ export function Main_calendar_modules(){
   
     return(
         <div className='calandar-Frame'>
-          <Calendar 
+          <Calendar
             formatDay={(locale, date) => date.toLocaleString('en', { day: 'numeric' }) } // 날짜 숫자로만 변환
             next2Label={null} // 다음 월 이동 2번째 버튼 삭제
             prev2Label={null} // 이전 월 이동 2번째 버튼 삭제

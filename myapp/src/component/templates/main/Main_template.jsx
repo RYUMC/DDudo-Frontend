@@ -3,6 +3,7 @@ import { Time_schedule } from '../../modules/main_modules/time-schedule/Time_sch
 import { Main_title_modules } from '../../modules/main_modules/title_modules/Main_title_modules'
 import { Main_minical_modules } from '../../modules/main_modules/minical_modules/Main_minical_modules'
 import { Main_calendar_modules } from '../../modules/main_modules/calendar_modules/Main_calendar_modules'
+import { LeftSide } from '../../modules/main_modules/schedule-module/Schedule'
 
 export function Main_template(){
   return(
@@ -22,8 +23,8 @@ export function Main_template(){
         <header>
           <div className='title'>Feed</div>
         </header>
-        <div className='left-side-schedule line'>
-
+        <div className='left-side-schedule'>
+          <LeftSide />
         </div>
         <div className='right-side-schedule'>
           <Time_schedule />

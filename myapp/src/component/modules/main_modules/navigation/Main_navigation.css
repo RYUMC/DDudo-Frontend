@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 1.75rem 0 0 1.75rem;
-  border-left: 1px solid rgb(187, 187, 187);
+  /* border-left: 1px solid rgb(187, 187, 187); */
 }
 
 .main-naviagation header{
@@ -93,7 +93,7 @@
 }
 .hidden-navigation-background{
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(171, 217, 255, 0.2);
   width: 100%;
   height: 100%;
 }
