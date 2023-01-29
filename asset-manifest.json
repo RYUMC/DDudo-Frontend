@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/DDudo-Frontend/static/css/main.66b2e597.css",
-    "main.js": "/DDudo-Frontend/static/js/main.ddc338bb.js",
+    "main.js": "/DDudo-Frontend/static/js/main.929b9793.js",
     "static/js/787.d3befce1.chunk.js": "/DDudo-Frontend/static/js/787.d3befce1.chunk.js",
+    "service-worker.js": "/DDudo-Frontend/service-worker.js",
     "index.html": "/DDudo-Frontend/index.html",
     "main.66b2e597.css.map": "/DDudo-Frontend/static/css/main.66b2e597.css.map",
-    "main.ddc338bb.js.map": "/DDudo-Frontend/static/js/main.ddc338bb.js.map",
+    "main.929b9793.js.map": "/DDudo-Frontend/static/js/main.929b9793.js.map",
     "787.d3befce1.chunk.js.map": "/DDudo-Frontend/static/js/787.d3befce1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.66b2e597.css",
-    "static/js/main.ddc338bb.js"
+    "static/js/main.929b9793.js"
   ]
 }
