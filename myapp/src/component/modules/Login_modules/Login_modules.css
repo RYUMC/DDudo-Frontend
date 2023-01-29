@@ -51,10 +51,11 @@
 .next-button{
   grid-row: 3/5;
   grid-column: 2/3;
-  border: 1px solid #18A0FB;
+  border: 1.5px solid #18A0FB;
   border-radius: 6px;
   text-align: center;
   font-size: 1.5rem;
+  font-weight: 600;
   margin: 1rem;
   padding: 7.5px 17.5px;
   text-decoration: none;
@@ -76,9 +77,14 @@
 
 .register-button{
   margin-left: 0.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #8b8b8b;
   text-decoration: none;
+}
+
+.register-button span{
+  font-weight: 500;
+  margin-right: 0.5rem;
 }
 
 .register-button:hover{

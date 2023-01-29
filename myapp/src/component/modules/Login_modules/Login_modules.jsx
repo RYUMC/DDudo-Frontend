@@ -11,8 +11,7 @@ export function Login_modules(){
       <Link to='/DDUdo-Fronted/main-page' className='next-button'>〉</Link>
       <div className="Line"></div>
       <div className='register'>
-        <span>회원가입</span>
-        <Link to="/DDudo-Frontend/register" className="register-button">〉</Link>
+        <Link to="/DDudo-Frontend/register" className="register-button"><span>회원가입</span>〉</Link>
       </div>
     </div>
   )
