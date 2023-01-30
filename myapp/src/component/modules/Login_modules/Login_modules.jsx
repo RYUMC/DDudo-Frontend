@@ -7,8 +7,7 @@ export function Login_modules(){
   const service = Login_service()
 
   const setLogin = () => {
-    console.log("ho")
-    service.login("dldmstjq99",  "alsxmchzh99@1")
+    service.login("dldmstjq99", "alsxmchzh99@1")
   }
   return(
     <div className='Login_modules-container'>
