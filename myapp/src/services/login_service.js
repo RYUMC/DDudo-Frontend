@@ -1,38 +1,39 @@
 import { useRecoilState } from 'recoil';
-import { LoginState } from '../atoms/auth_atom';
+import { loginState } from '../atoms/auth_atom';
 import { useNavigate } from 'react-router-dom';
 import {login_api} from '../api/login_api'
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
-export function Login_service(data){
+export function Login_service(){
 
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(loginState);
   const navigate = useNavigate();
-
-  const goToMain = () => 
-  {
-    navigate('/DDUdo-Fronted/main-page');
-  };
   
   return {
     login,
-    register
+    logout
   }
 
   async function login(userID, userPassword){
     const response = await login_api(userID, userPassword);
-    
-    if(response.data === true)
+    console.log(response)
+    if(response === true)
     {
       localStorage.setItem('user', userID);
       setIsLoggedIn(true);
-      console.log(response.data, isLoggedIn);
-      goToMain();
-      Swal.fire(`Hi ${userID}!`);
+      console.log(response, isLoggedIn);
+      navigate('/DDUdo-Fronted/main');
+      // Swal.fire(`Hi ${userID}!`);
     }
     else
     {
-      Swal.fire("Invalid ID, Password!");
+      // Swal.fire("Invalid ID, Password!");
     }
+  }
+
+  function logout(){
+    setIsLoggedIn(false);
+    localStorage.removeItem("user");
+    navigate('/DDudo-Frontend')
   }
 }

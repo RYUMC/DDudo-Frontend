@@ -25,7 +25,8 @@ export function Login_modules(){
   const setLogin = (event) => 
   {
     event.preventDefault();
-    service.login(ID, Password);
+    // service.login(ID, Password);
+    service.login("dldmstjq99", "alsxmchzh99@");
     setID("");
     setPassword("");
   };

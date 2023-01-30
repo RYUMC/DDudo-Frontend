@@ -17,10 +17,9 @@ function App() {
             <Route path="/DDudo-Frontend" element={<Login_modules />}/>
             <Route path="/DDudo-Frontend/register" element={<Register_modules />} />
           </Route>
-          <Route path="/DDUdo-Fronted/main-page" element={<Main_page />}>
-            <Route path="/DDUdo-Fronted/main-page" element={<Main_template />} />
+          <Route path="/DDUdo-Fronted/main" element={<Main_page />}>
+            <Route path="/DDUdo-Fronted/main" element={<Main_template />} />
           </Route>
-          {/* <Route path="/DDUdo-Fronted/main" element={<Main_title_modules />}/>  */}
         </Routes>
       </BrowserRouter>
     </div>
