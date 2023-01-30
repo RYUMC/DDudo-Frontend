@@ -7,11 +7,7 @@ import { RecoilRoot } from "recoil";
 //
 
 export function Register_modules() {
-  const [inputs, setInputs] = React.useState(0);
 
-  const onChange = (event) => {
-    setInputs(event.target.value);
-  };
 
   return (
     <RecoilRoot>
@@ -21,13 +17,7 @@ export function Register_modules() {
           〈
         </Link>
         <div className="regi_form">
-          <input
-            value={inputs}
-            id="id"
-            type="text"
-            placeholder="ID"
-            onChange={onChange}
-          />
+          <input type="text" placeholder="ID"/>
           <input type="password" placeholder="Password" />
           <input type="text" placeholder="Name" />
           <input type="text" placeholder="Age" />

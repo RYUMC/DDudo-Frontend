@@ -5,18 +5,21 @@ import Plus from '../../../../assets/plus.png'
 import Add from '../../../../assets/add.png'
 import navigation from '../../../../assets/navigation.png'
 
+import { LoginState } from '../../../../atoms/auth_atom';
+import { useRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import './Main_navigation.css'
-
-import { useState } from 'react'
+import { useState } from 'react';
+import './Main_navigation.css';
 
 
 export function Main_navigation(){
-  const [openNav, setOpenNav] = useState(false)
-
+  const [openNav, setOpenNav] = useState(false);
+  
   const openNavigation = () => {
     setOpenNav(!openNav)
   }
+
   return(
     <>
     {!openNav?
@@ -41,6 +44,17 @@ function Nav({openNavigation}){
 }
 
 function Hidden_Nav(){
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
+  const navigate = useNavigate();
+
+  function goToLogin()
+  {
+    setIsLoggedIn(false);
+    localStorage.removeItem("user");
+    navigate('/DDudo-Frontend');
+
+  }
+
   return(
     <div className='main-naviagation'>
       <header>
@@ -55,8 +69,9 @@ function Hidden_Nav(){
         <div className='item'><img src={Plus}/> Add Schedule</div>
       </main>
       <footer>
-        <span>Junhee</span>
-        <Link to='/DDudo-Frontend'><img src={logOut} className="logout-button"/></Link>
+        <span>{localStorage.getItem("user")}</span>
+        <img src={logOut} onClick={goToLogin} className="logout-button"/>
+        {/*<Link to='/DDudo-Frontend'><img src={logOut} className="logout-button"/></Link>*/}
       </footer>
     </div>
   )

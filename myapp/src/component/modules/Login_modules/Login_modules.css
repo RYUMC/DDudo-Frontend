@@ -33,6 +33,14 @@
   height: 80%;
 }
 
+.login_form
+{
+  display: grid;
+  grid-row: 3/5;
+  grid-column: 1/2;
+}
+
+
 .ID{
   grid-row: 3/4;
 }
@@ -60,6 +68,7 @@
   padding: 7.5px 17.5px;
   text-decoration: none;
   color: #18A0FB;
+  background-color: white;
 }
 
 .next-button:hover{
