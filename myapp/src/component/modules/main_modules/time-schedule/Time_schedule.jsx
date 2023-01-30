@@ -12,7 +12,7 @@ export function Time_schedule(){
           <div className='time-content'>
             {timeArray.map((i)=>{
               return(
-                <span>{i % 2 == 0 ? `${parseInt(i/2)}:00`:`${parseInt(i/2)}:30`}</span>
+                <span key = {i}>{i % 2 == 0 ? `${parseInt(i/2)}:00`:`${parseInt(i/2)}:30`}</span>
               )
             })}
         </div>

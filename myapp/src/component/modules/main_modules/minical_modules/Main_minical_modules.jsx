@@ -56,7 +56,7 @@ export function Main_minical_modules(){
             <span>S</span>
         </div>
         <div className = 'this_week'>
-            {<CreateWeek />}
+            <CreateWeek />
         </div>
       </div>
   )
