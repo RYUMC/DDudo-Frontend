@@ -9,13 +9,14 @@ import { LoginState } from '../../../../atoms/auth_atom';
 import { useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Login_service } from '../../../../services/login_service'
 import { useState } from 'react';
 import './Main_navigation.css';
 
 
 export function Main_navigation(){
   const [openNav, setOpenNav] = useState(false);
-  
+
   const openNavigation = () => {
     setOpenNav(!openNav)
   }
@@ -44,15 +45,10 @@ function Nav({openNavigation}){
 }
 
 function Hidden_Nav(){
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(LoginState);
-  const navigate = useNavigate();
+  const service = Login_service();
 
-  function goToLogin()
-  {
-    setIsLoggedIn(false);
-    localStorage.removeItem("user");
-    navigate('/DDudo-Frontend');
-
+  const isLogOut = () => {
+    service.logout()
   }
 
   return(
@@ -70,7 +66,7 @@ function Hidden_Nav(){
       </main>
       <footer>
         <span>{localStorage.getItem("user")}</span>
-        <img src={logOut} onClick={goToLogin} className="logout-button"/>
+        <img src={logOut} onClick={isLogOut} className="logout-button"/>
         {/*<Link to='/DDudo-Frontend'><img src={logOut} className="logout-button"/></Link>*/}
       </footer>
     </div>

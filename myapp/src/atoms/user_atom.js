@@ -3,12 +3,13 @@ import { recoilPersist } from 'recoil-persist';
 
 const { persistAtom } = recoilPersist();
 
-export const IDState = atom({
-    key: "IDState",
-    default: '',
-  });
-  
-export  const PWState = atom({
-    key: "PWState",
-    default: '',
+export const dayState = atom({
+    key: 'dayState',
+    default: {
+        year : "",
+        month : "",
+        day : ""
+    }
+    ,
+    effects_UNSTABLE: [persistAtom],
   });

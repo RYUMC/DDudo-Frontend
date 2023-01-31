@@ -2,15 +2,15 @@ import axios from 'axios'
 
 import {url} from '../static/static'
 
-export const login_api = (id, pw) => {
+export const sign_up_api = (id, pw, name, age) => {
   const URL = url + '/user'
-  const response = axios.get(
+  const response = axios.post(
     URL,
     {
-      params: {
         id: id,
-        pw: pw
-      }
+        pw: pw,
+        name: name,
+        age: age
     }
   )
   return response

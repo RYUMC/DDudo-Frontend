@@ -2,10 +2,12 @@ import './Main_calendar_modules.css'
 import Calendar from 'react-calendar';
 import React, { useState } from 'react';
 import moment from 'moment/moment';
+import { dayState } from '../../../../atoms/user_atom';
+import { useRecoilState } from 'recoil';
 export function Main_calendar_modules(){
 
     const [value, onChange] = useState(new Date());
-  
+    
     return(
         <div className='calandar-Frame'>
           <Calendar
@@ -15,8 +17,8 @@ export function Main_calendar_modules(){
             onChange={onChange} 
             locale="en-GB" // 기본 영문으로 설정
             value={value} />
-            {/* <div>
+            {/*<div>
                 {moment(value).format("YYYY-MM-DD")} 
-            </div> */}
+              </div>*/}   
         </div> )
   }

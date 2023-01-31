@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom';
 import './Login_modules.css';
-import axios from 'axios';
-import { Login_service } from '../../../services/login_service'
-import { useEffect } from 'react';
-import { IDState,PWState } from '../../../atoms/user_atom';
-import { useRecoilState } from 'recoil';
+import { Login_service } from '../../../services/login_service';
+import { useState } from 'react';
 
 export function Login_modules(){
 
-  const [ID, setID] = useRecoilState(IDState);
-  const [Password, setPassword] = useRecoilState(PWState);
+  const [ID, setID] = useState('');
+  const [Password, setPassword] = useState('');
   const service = Login_service();
 
   const onIDHandler = (event) =>
