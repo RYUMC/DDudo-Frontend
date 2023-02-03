@@ -8,6 +8,8 @@ import plus from '../../../../assets/plus.png'
 import DatePicker from "react-datepicker";
 import Switch from "react-switch";
 import "react-datepicker/dist/react-datepicker.css";
+import { useRecoilState } from 'recoil';
+import { selectedDayState } from '../../../../atoms/user_atom';
 
 
 export function CustomTimePicker({selectTime, setSelectTime, customClass, day, disable}){
@@ -113,10 +115,10 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker}
 export function AddSchedule(){
   const [firstPicker, setFirstPicker] = useState(false)
   const [secondPicker, setSecondPicker] = useState(false)
-
+  
   return(
     <div className='add-schedule' onClick={(e)=> e.stopPropagation()}>
-      <div className={(firstPicker || secondPicker) ? 'layout-left' : 'layout-left calandar-prevent'}>
+      <div className='layout-left'>
         <Main_calendar_modules />
       </div>
       <div className='layout-right'>

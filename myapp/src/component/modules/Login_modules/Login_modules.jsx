@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import './Login_modules.css';
 import axios from 'axios';
@@ -8,9 +7,8 @@ import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
 export function Login_modules(){
-
-  const [ID, setID] = useState();
-  const [Password, setPassword] = useState();
+  const [ID, setID] = useState('');
+  const [Password, setPassword] = useState('');
   const service = Login_service();
 
   const onIDHandler = (event) =>
@@ -26,8 +24,7 @@ export function Login_modules(){
   const setLogin = (event) => 
   {
     event.preventDefault();
-    // service.login(ID, Password);
-    service.login("dldmstjq99", "alsxmchzh99@");
+    service.login(ID, Password);
     setID("");
     setPassword("");
   };

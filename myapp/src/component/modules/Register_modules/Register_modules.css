@@ -41,7 +41,7 @@
 .regi_form
 {
   display: grid;
-  grid-template-rows: 0.25fr, 0.25fr, 0.25fr, 0.25fr, 0.15fr, 0.25fr;
+  grid-template-rows: 0.25fr, 0.25fr, 0.25fr, 0.25fr, 0.15fr, 0.25fr,0.25fr;
   align-items: center;
   justify-items: center;
   grid-column: 1/3;
@@ -64,6 +64,15 @@
   width: 70%;
 }
 
+.duplicate_check_button
+{
+  font-weight:bolder;
+  font-size: calc(0.75vw + 0.25vh + 1px);
+  border: 1.5px solid #18A0FB;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 .regi_line{
   width: 100%;
   border-top: 1.5px solid #cfcfcf;
@@ -77,15 +86,19 @@
   padding: 0.5rem 0;
   font-weight: 500;
   background-color: #18A0FB;
+  border: none;
   border-radius: 6px;
   text-align: center;
   width: 80%;
+  cursor: pointer;
 }
 
-.regi_btn:hover
+.regi_btn:disabled
 {
-cursor: pointer;
+  background-color: #D3D3D3;
+  cursor: default;
 }
+
 
 @media screen and (max-width: 500px) {
   .Register_modules-containter{

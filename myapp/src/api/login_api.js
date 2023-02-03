@@ -9,8 +9,7 @@ export async function login_api(id, pw){
     id: id,
     pw: pw
   }})
-  console.log(response)
-  return response.data.isSuccess
+  return response.data.result.success;
 }
 
 

@@ -1,5 +1,7 @@
 import './Schedule.css'
 import Book from '../../../../assets/book.png'
+import { useRecoilState } from 'recoil';
+import { selectedDayState } from '../../../../atoms/user_atom';
 import { useState } from 'react'
 
 export function Schedule(){
@@ -26,5 +28,6 @@ export function LeftSide(){
     <div className="LeftSide-frame">
       <Schedule />
     </div>
+    
   )
 }

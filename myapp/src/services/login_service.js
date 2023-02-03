@@ -1,8 +1,10 @@
-import { useRecoilState } from 'recoil';
+import { errorSelector, useRecoilState } from 'recoil';
 import { loginState } from '../atoms/auth_atom';
 import { useNavigate } from 'react-router-dom';
-import {login_api} from '../api/login_api'
-// import Swal from "sweetalert2";
+import {login_api} from '../api/login_api';
+import { ID_duplicate_check_api } from '../api/ID_duplicate_check_api';
+import { sign_up_api } from '../api/sign_up_api';
+import Swal from "sweetalert2";
 
 export function Login_service(){
 
@@ -11,7 +13,9 @@ export function Login_service(){
   
   return {
     login,
-    logout
+    logout,
+    id_duplicate_check,
+    sign_up
   }
 
   async function login(userID, userPassword){
@@ -20,10 +24,10 @@ export function Login_service(){
       localStorage.setItem('user', userID);
       setIsLoggedIn(true);
       navigate('/DDUdo-Fronted/main');
-      // Swal.fire(`Hi ${userID}!`);
+      Swal.fire(`Hi ${userID}!`);
     }
     else{
-      // Swal.fire("Invalid ID, Password!");
+      Swal.fire("Invalid ID, Password!");
     }
   }
 
@@ -31,5 +35,36 @@ export function Login_service(){
     setIsLoggedIn(false);
     localStorage.removeItem("user");
     navigate('/DDudo-Frontend')
+  }
+
+  async function id_duplicate_check(userID){
+    if(userID === "")
+    {
+      Swal.fire("Enter your ID!");
+      return true;
+    }
+    else
+    {
+      const response = await ID_duplicate_check_api(userID);
+      if(response === false)
+      {
+        Swal.fire("This is an available ID!");
+      }
+      else
+      {
+        Swal.fire("Duplicate ID!");
+      }
+      return response;
+    }
+  
+  }
+
+  async function sign_up (userID, userPassword, userName, userAge){
+    const response = await sign_up_api(userID, userPassword, userName, userAge);
+    console.log(response);
+    Swal.fire("Successfully registered as a member!");
+    setTimeout(()=> {
+      navigate("/DDudo-Frontend");
+    }, 2000);
   }
 }

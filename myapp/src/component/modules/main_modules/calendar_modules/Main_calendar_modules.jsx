@@ -2,10 +2,25 @@ import './Main_calendar_modules.css'
 import Calendar from 'react-calendar';
 import React, { useState } from 'react';
 import moment from 'moment/moment';
+import { useEffect } from 'react';
+import { selectedDayState } from '../../../../atoms/user_atom';
+import { useRecoilState } from 'recoil';
 export function Main_calendar_modules(){
 
     const [value, onChange] = useState(new Date());
+    const [selectedDay, setSelectedDay] = useRecoilState(selectedDayState);
+
+    useEffect(() => {
+      const day = moment(value).format("YYYY-MM-DD").split('-');
+      const dayState = {
+        year : day[0],
+        month : day[1],
+        day : day[2]
+      }
+      setSelectedDay(dayState);
+    },[value]);
   
+
     return(
         <div className='calandar-Frame'>
           <Calendar
@@ -15,5 +30,8 @@ export function Main_calendar_modules(){
             onChange={onChange} 
             locale="en-GB" // 기본 영문으로 설정
             value={value} />
+            <div> 
+                {selectedDay.day} 
+            </div>
         </div> )
   }
