@@ -15,8 +15,5 @@ export function Main_calendar_modules(){
             onChange={onChange} 
             locale="en-GB" // 기본 영문으로 설정
             value={value} />
-            {/* <div>
-                {moment(value).format("YYYY-MM-DD")} 
-            </div> */}
         </div> )
   }

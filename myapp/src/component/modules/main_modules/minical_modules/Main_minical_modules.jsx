@@ -24,28 +24,25 @@ function CreateWeek(){
         dd = String(dd).length === 1 ? '0' + dd : dd;
         if(isSameDay(currentDay,resultDay))
         {}
-        else if(currentDay > resultDay )
-        {
+        else if(currentDay > resultDay){
             thisWeekLeft.push(<span>{dd}</span>);
         }
-        else if(currentDay < resultDay)
-        {
+        else if(currentDay < resultDay){
             thisWeekRight.push(<span>{dd}</span>);
         }
     }
     return (
         <>
             {thisWeekLeft}
-            <span className= 'today'>{theDate}</span>
+            <span className='today'>{theDate}</span>
             {thisWeekRight}
         </>
     )
 }
 
-
 export function Main_minical_modules(){
     return(
-      <div className= 'mini_calendar'>
+      <div className='mini_calendar'>
         <div className ='header'>
             <span>S</span>
             <span>M</span>
@@ -58,6 +55,7 @@ export function Main_minical_modules(){
         <div className = 'this_week'>
             <CreateWeek />
         </div>
+        
       </div>
   )
 }

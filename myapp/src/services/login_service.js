@@ -16,17 +16,13 @@ export function Login_service(){
 
   async function login(userID, userPassword){
     const response = await login_api(userID, userPassword);
-    console.log(response)
-    if(response === true)
-    {
+    if(response === true){
       localStorage.setItem('user', userID);
       setIsLoggedIn(true);
-      console.log(response, isLoggedIn);
       navigate('/DDUdo-Fronted/main');
       // Swal.fire(`Hi ${userID}!`);
     }
-    else
-    {
+    else{
       // Swal.fire("Invalid ID, Password!");
     }
   }

@@ -6,13 +6,13 @@ import Add from '../../../../assets/add.png'
 import navigation from '../../../../assets/navigation.png'
 
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import './Main_navigation.css';
 
 import { Login_service } from '../../../../services/login_service'
 
 import { AddSchedule } from '../add-schedule-modules/AddSchedule' 
-
+import { Calendar } from 'react-calendar'
 
 export function Main_navigation(){
   const [openNav, setOpenNav] = useState(false);
@@ -36,7 +36,6 @@ export function Main_navigation(){
 
 function Nav({openNavigation}){
   const [openModal, setOpenModal] = useState(true)
-
   const location = useLocation()
 
   return(
@@ -56,23 +55,21 @@ function Hidden_Nav({openModal, setOpenModal}){
     service.logout()
   }
 
-  const isOpenModal = (e) => {
-    setOpenModal(!openModal)
-    console.log(openModal)
-  }
-
   return(
     <div className='main-naviagation'>
       <header>
         DDuDo
       </header>
-      <main onClick={e=>e.stopPropagation()}>
+      <main>
         <div className='st'>MAIN APP</div>
         <Link to="/DDUdo-Fronted/main" className='item'><img src={Home}/> Home</Link>
         <div className='item'><img src={Add}/> Follow</div>
         <div className='item'><img src={Setting}/> Setting</div>
         <div className='st'>OTHERS</div>
-        <div className='item' onClick={(e)=>setOpenModal(!openModal)}><img src={Plus}/> Add Schedule</div>
+        <div className='item' onClick={(e)=>{
+          e.stopPropagation()
+          setOpenModal(!openModal)
+        }}><img src={Plus}/> Add Schedule</div>
       </main>
       <footer>
         <span>{localStorage.getItem("user")}</span>
