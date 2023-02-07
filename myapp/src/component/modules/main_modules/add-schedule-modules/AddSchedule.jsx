@@ -8,9 +8,8 @@ import plus from '../../../../assets/plus.png'
 import DatePicker from "react-datepicker";
 import Switch from "react-switch";
 import "react-datepicker/dist/react-datepicker.css";
-import { useRecoilState } from 'recoil';
-import { selectedDayState } from '../../../../atoms/user_atom';
-import { logDOM } from '@testing-library/react';
+
+import { Schedule_service } from '../../../../services/schdule_service';
 
 
 import moment from 'moment/moment';
@@ -47,9 +46,14 @@ export function CustomToggle({check, set, color, className}){
 
 
 function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker, firstDate, secondDate}){
+
+  const scheduleService = Schedule_service()
+
   const [firstSelectTime, setFirstSelectTime] = useState(new Date())
   const [secondSelectTime, setSecondSelectTime] = useState(new Date())
   const [isAlways, setIsAlways] = useState(true)
+
+  const [content, setContent] = useState("")
 
   const onFirstPicker = () =>{
     if(secondPicker || isAlways) return true
@@ -94,7 +98,7 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker,
     <div className='Add-content-layout'>
       <div>
         <div className='title'>내용</div>
-        <div className='content-input'><span className='category-circle'></span><input type="text" placeholder='일정 제목'/></div>
+        <div className='content-input'><span className='category-circle'></span><input type="text" value={content} onChange={e=>setContent(e.currentTarget.value)} placeholder='일정 제목'/></div>
       </div>
       <div>
         <div className='title'>일정</div>
@@ -103,13 +107,13 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker,
             <span style={{display: 'inline-block', width: '85%', zIndex: '-10'}}>
               <CustomTimePicker selectTime={firstSelectTime} setSelectTime={setFirstSelectTime} customClass="custom-time-picker" day={firstDate} disable={firstPickerMemo}/>
             </span>
-            <span className='edit-button' onClick={changeFirstPicker}>{firstPickerMemo ? '선택' : '저장'}</span>
+            <span className='edit-button' onClick={changeFirstPicker}>{!firstPicker ? '선택' : '저장'}</span>
           </div>
           <div className="time-picker">
             <span style={{display: 'inline-block', width: '85%'}}>
               <CustomTimePicker selectTime={secondSelectTime} setSelectTime={setSecondSelectTime} customClass="custom-time-picker" day={secondDate} disable={secondPickerMemo}/>
             </span>
-            <span className='edit-button' onClick={changeSecondPicker}>{secondPickerMemo ? '선택' : '저장'}</span>
+            <span className='edit-button' onClick={changeSecondPicker}>{!secondPicker ? '선택' : '저장'}</span>
           </div>
           <div className='always-layout'>하루 종일<CustomToggle check={isAlways} set={changeToggle} color={"#9575D1"} className={"always-layout-toggle"}/></div>
         </div>
@@ -119,7 +123,7 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker,
         <div className='join-list'>이은섭 / 이승민 / 오진영 / 정준희</div>
       </div>
       <footer>
-        <button>추가</button>
+        <button onClick={e=>scheduleService.addSchedule()}>추가</button>
       </footer>
     </div>
   )

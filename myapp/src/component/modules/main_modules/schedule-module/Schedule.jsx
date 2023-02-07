@@ -1,8 +1,6 @@
 import './Schedule.css'
-import Book from '../../../../assets/book.png'
-import { useRecoilState } from 'recoil';
-import { selectedDayState } from '../../../../atoms/user_atom';
-import { useState } from 'react'
+
+import { useEffect, useState } from 'react'
 
 export function Schedule(){
   const [check, setCheck] = useState(false);

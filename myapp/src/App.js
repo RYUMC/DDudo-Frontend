@@ -5,12 +5,14 @@ import { Login_modules } from './component/modules/Login_modules/Login_modules';
 import { Register_modules } from './component/modules/Register_modules/Register_modules';
 import { Main_page } from './pages/main_page/Main_page';
 import { Main_template } from './component/templates/main/Main_template'
+import { Suspense } from 'react';
 // import { Main_title_modules } from './component/modules/Main_title_modules/Main_title_modules';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Suspense fallback={<></>}>
       {/* <Header /> */}
         <Routes>
           <Route path="/DDudo-Frontend" element={<Login_page />}>
@@ -21,6 +23,7 @@ function App() {
             <Route path="/DDUdo-Fronted/main" element={<Main_template />} />
           </Route>
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );

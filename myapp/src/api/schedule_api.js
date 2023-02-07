@@ -4,6 +4,8 @@ import moment from 'moment/moment';
 import { selector, atom } from 'recoil';
 import axios from 'axios'
 
+import {url} from '../static/static'
+
 // api 재요청 atom
 // selector가 atom을 구독하게 하여 refresh가 필요할 경우 데이터 처리 필요없이 api 데이터 갱신
 // 따로 selector의 값을 return 받아 데이터를 처리할 필요가 없음
@@ -13,7 +15,7 @@ const refreshAtom = atom({
 })
 
 export const scheduleAPISelector = selector({
-  key: scheduleAPISelector,
+  key: 'scheduleAPISelector',
   get: async ({get}) => {
     // refresh 구독
     get(refreshAtom)
@@ -33,6 +35,7 @@ export const scheduleAPISelector = selector({
     //   }}
     // )
     // return response.data.result.success;
+    return true
   },
   set: ({set})=>{
     // selector의 상태를 바꿔줌 -> get요청에서 구독하고 있는 값이 바뀌므로 api 재요청
@@ -43,3 +46,12 @@ export const scheduleAPISelector = selector({
     set(refreshAtom, (id) => id + 1)
   }
 })
+
+export const addScheduleAPI = async() => {
+  const URL = url + '/todos'
+  const response = await axios.post(URL,
+    {
+      
+    }
+  )
+}

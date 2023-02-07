@@ -9,11 +9,14 @@ import { LeftSide } from '../../modules/main_modules/schedule-module/Schedule'
 import moment from 'moment/moment';
 import { useState, useEffect, useMemo } from 'react';
 import { selectedDayState } from '../../../atoms/user_atom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { scheduleAPISelector } from '../../../api/schedule_api'
 
 
 export function Main_template(){
   const [selectedDay, setSelectedDay] = useRecoilState(selectedDayState);
+  const scheduleValue = useRecoilValue(scheduleAPISelector)
+  // useEffect(()=>{console.log(scheduleValue)}, [selectedDay])
 
   return(
     <div className="main_template-container">
