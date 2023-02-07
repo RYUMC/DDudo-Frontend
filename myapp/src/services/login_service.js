@@ -1,9 +1,7 @@
-import { errorSelector, useRecoilState } from 'recoil';
+import { errorSelector, useRecoilState, useResetRecoilState } from 'recoil';
 import { loginState } from '../atoms/auth_atom';
 import { useNavigate } from 'react-router-dom';
-import {login_api} from '../api/login_api';
-import { ID_duplicate_check_api } from '../api/ID_duplicate_check_api';
-import { sign_up_api } from '../api/sign_up_api';
+import {login_api, ID_duplicate_check_api, sign_up_api} from '../api/login_api';
 import Swal from "sweetalert2";
 
 export function Login_service(){
@@ -38,25 +36,18 @@ export function Login_service(){
   }
 
   async function id_duplicate_check(userID){
-    if(userID === "")
-    {
+    if(userID === ""){
       Swal.fire("Enter your ID!");
       return true;
     }
-    else
-    {
-      const response = await ID_duplicate_check_api(userID);
-      if(response === false)
-      {
-        Swal.fire("This is an available ID!");
-      }
-      else
-      {
-        Swal.fire("Duplicate ID!");
-      }
-      return response;
+    const response = await ID_duplicate_check_api(userID);
+    if(response === false){
+      Swal.fire("This is an available ID!");
     }
-  
+    else{
+       Swal.fire("Duplicate ID!");
+    }
+    return response;
   }
 
   async function sign_up (userID, userPassword, userName, userAge){

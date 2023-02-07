@@ -5,9 +5,5 @@ const { persistAtom } = recoilPersist();
 
 export  const selectedDayState = atom({
   key: "selectedDayState",
-  default: {
-    year : '',
-    month : '',
-    day : ''
-  },
+  default: new Date(),
 });

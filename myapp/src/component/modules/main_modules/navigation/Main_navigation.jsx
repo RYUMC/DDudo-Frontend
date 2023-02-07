@@ -35,12 +35,12 @@ export function Main_navigation(){
 
 
 function Nav({openNavigation}){
-  const [openModal, setOpenModal] = useState(true)
+  const [openModal, setOpenModal] = useState(false)
   const location = useLocation()
 
   return(
     <div className='hidden-navigation-background' onClick={openNavigation}>
-      {(openModal === (location.pathname === "/DDUdo-Fronted/main")) && <div className='schedule-modal'>{<AddSchedule />}</div>}
+      {(openModal) && <div className='schedule-modal'>{<AddSchedule />}</div>}
       <div className='hidden-naviagation'>
         <Hidden_Nav openModal = {openModal} setOpenModal = {setOpenModal}/>
       </div>

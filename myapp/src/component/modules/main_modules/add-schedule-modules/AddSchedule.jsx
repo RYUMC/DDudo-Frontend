@@ -1,5 +1,5 @@
 import './AddSchedule.css'
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { Main_calendar_modules } from '../calendar_modules/Main_calendar_modules'
 
@@ -10,10 +10,13 @@ import Switch from "react-switch";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRecoilState } from 'recoil';
 import { selectedDayState } from '../../../../atoms/user_atom';
+import { logDOM } from '@testing-library/react';
+
+
+import moment from 'moment/moment';
 
 
 export function CustomTimePicker({selectTime, setSelectTime, customClass, day, disable}){
-  
   return(
     <DatePicker
       className={customClass}
@@ -25,39 +28,37 @@ export function CustomTimePicker({selectTime, setSelectTime, customClass, day, d
       showTimeSelectOnly
       timeIntervals={5}
       timeCaption="Time"
-      dateFormat={day+":  h:mm aa"}
+      dateFormat={day+"  :  h:mm aa"}
       disabled = {disable}
     />
   )
 }
 
-export function CustomToggle({check, set, color, className, disable}){
+export function CustomToggle({check, set, color, className}){
   return(
     <Switch
       onChange={set}
       checked={check}
       onColor={color}
       className={className}
-      disabled = {disable}
     />
   )
 }
 
 
-function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker}){
+function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker, firstDate, secondDate}){
   const [firstSelectTime, setFirstSelectTime] = useState(new Date())
   const [secondSelectTime, setSecondSelectTime] = useState(new Date())
-  const [checkToggle, setCheckToggle] = useState(true)
-  const [isAlways, setIsAlways] = useState(false)
+  const [isAlways, setIsAlways] = useState(true)
 
   const onFirstPicker = () =>{
-    if(secondPicker) return true
+    if(secondPicker || isAlways) return true
     if(!firstPicker) return true
     return false
   }
 
   const onSecondPicker = () =>{
-    if(firstPicker) return true
+    if(firstPicker || isAlways) return true
     if(!secondPicker) return true
     return false
   }
@@ -72,10 +73,22 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker}
     setSecondPicker(!secondPicker)
   }
 
-  const toggleDisable = () => {
-    if (onFirstPicker() && onSecondPicker()) return false
-    return true
+  const changeToggle = () => {
+    if(isAlways){
+      setIsAlways(false)
+      setFirstSelectTime(new Date())
+      setSecondSelectTime(new Date())
+    }
+    else{
+      let tm = new Date()
+      setIsAlways(true)
+      setFirstSelectTime(tm.setHours(0, 0, 0, 0))
+      setSecondSelectTime(tm.setHours(0, 0, 0, 0))
+    }
   }
+
+  const firstPickerMemo = useMemo(()=>onFirstPicker(), [firstPicker, isAlways])
+  const secondPickerMemo = useMemo(()=>onSecondPicker(), [secondPicker, isAlways])
 
   return (
     <div className='Add-content-layout'>
@@ -84,21 +97,21 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker}
         <div className='content-input'><span className='category-circle'></span><input type="text" placeholder='일정 제목'/></div>
       </div>
       <div>
-        <div className='title'>일정<CustomToggle check={checkToggle} set={setCheckToggle} color={"#F3C349"} className={"toggle-size"} disable={toggleDisable()}/></div>
-        <div className={!checkToggle && 'prevent'}>
+        <div className='title'>일정</div>
+        <div>
           <div className="time-picker">
             <span style={{display: 'inline-block', width: '85%', zIndex: '-10'}}>
-              <CustomTimePicker selectTime={firstSelectTime} setSelectTime={setFirstSelectTime} customClass="custom-time-picker" day="" disable={onFirstPicker()}/>
+              <CustomTimePicker selectTime={firstSelectTime} setSelectTime={setFirstSelectTime} customClass="custom-time-picker" day={firstDate} disable={firstPickerMemo}/>
             </span>
-            <span className='edit-button' onClick={changeFirstPicker}>{onFirstPicker() ? '입력' : '저장'}</span>
+            <span className='edit-button' onClick={changeFirstPicker}>{firstPickerMemo ? '선택' : '저장'}</span>
           </div>
           <div className="time-picker">
             <span style={{display: 'inline-block', width: '85%'}}>
-              <CustomTimePicker selectTime={secondSelectTime} setSelectTime={setSecondSelectTime} customClass="custom-time-picker" day="" disable={onSecondPicker()}/>
+              <CustomTimePicker selectTime={secondSelectTime} setSelectTime={setSecondSelectTime} customClass="custom-time-picker" day={secondDate} disable={secondPickerMemo}/>
             </span>
-            <span className='edit-button' onClick={changeSecondPicker}>{onSecondPicker() ? '입력' : '저장'}</span>
+            <span className='edit-button' onClick={changeSecondPicker}>{secondPickerMemo ? '선택' : '저장'}</span>
           </div>
-          <div className='always-layout'>하루 종일<CustomToggle check={isAlways} set={setIsAlways} color={"#9575D1"} className={"always-layout-toggle"} disable={toggleDisable()}/></div>
+          <div className='always-layout'>하루 종일<CustomToggle check={isAlways} set={changeToggle} color={"#9575D1"} className={"always-layout-toggle"}/></div>
         </div>
       </div>
       <div>
@@ -115,14 +128,27 @@ function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker}
 export function AddSchedule(){
   const [firstPicker, setFirstPicker] = useState(false)
   const [secondPicker, setSecondPicker] = useState(false)
+
+  const [firstTime, onChangeFirstTime] = useState(new Date())
+  const [secondTime, onChangeSecondTime] = useState(new Date())
+
+  const firstDate = useMemo(()=>{
+    const day = moment(firstTime).format("YYYY-MM-DD");
+    return day
+  }, [firstTime])
+
+  const secondDate = useMemo(()=>{
+    const day = moment(secondTime).format("YYYY-MM-DD");
+    return day
+  }, [secondTime])
   
   return(
     <div className='add-schedule' onClick={(e)=> e.stopPropagation()}>
-      <div className='layout-left'>
-        <Main_calendar_modules />
+      <div className={(firstPicker || secondPicker ) ? 'layout-left' : 'layout-left calandar-prevent'}>
+        <Main_calendar_modules value={secondPicker? secondTime : firstTime} onChange={secondPicker ? onChangeSecondTime : onChangeFirstTime}/>
       </div>
       <div className='layout-right'>
-        <AddContent firstPicker={firstPicker} secondPicker={secondPicker} setFirstPicker={setFirstPicker} setSecondPicker={setSecondPicker}/>
+        <AddContent firstPicker={firstPicker} secondPicker={secondPicker} setFirstPicker={setFirstPicker} setSecondPicker={setSecondPicker} firstDate={firstDate} secondDate={secondDate} />
       </div>
     </div>
   )

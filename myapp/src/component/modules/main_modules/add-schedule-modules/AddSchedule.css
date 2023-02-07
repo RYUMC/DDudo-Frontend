@@ -22,6 +22,7 @@
   background-color: rgba(171, 217, 255, 0.2);
   box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.25);
   border-radius: 1rem;
+  margin-top: -1%;
 }
 
 .layout-right{
@@ -175,15 +176,4 @@
   width: 0.8rem;
   height: 0.4rem;
   margin: 0 0 0.9rem 0.5rem;
-}
-
-.prevent::before{
-  z-index: 1;
-  content: "";
-  position: absolute;
-  width: 30%;
-  height: 16.5%;
-  background-color: rgba(171, 217, 255, 0.2);
-  box-shadow: 0 1px 4px rgba(171, 217, 255, 0.05), 0 6px 6px rgba(171, 217, 255, 0.25);
-  border-radius: 15px;
 }

@@ -5,7 +5,16 @@ import { Main_minical_modules } from '../../modules/main_modules/minical_modules
 import { Main_calendar_modules } from '../../modules/main_modules/calendar_modules/Main_calendar_modules'
 import { LeftSide } from '../../modules/main_modules/schedule-module/Schedule'
 
+
+import moment from 'moment/moment';
+import { useState, useEffect, useMemo } from 'react';
+import { selectedDayState } from '../../../atoms/user_atom';
+import { useRecoilState } from 'recoil';
+
+
 export function Main_template(){
+  const [selectedDay, setSelectedDay] = useRecoilState(selectedDayState);
+
   return(
     <div className="main_template-container">
       <div className='left-side'>
@@ -16,7 +25,7 @@ export function Main_template(){
           <Main_minical_modules/>
         </div>
         <div className='main-calendar'>
-          <Main_calendar_modules/>
+          <Main_calendar_modules value={selectedDay} onChange={setSelectedDay}/>
         </div>
       </div>
       <div className='right-side'>
