@@ -11,7 +11,6 @@
 .layout-left{
   width: 50%;
   height: 100%;
-  border-right: 1px dotted rgb(198, 198, 198);
 }
 
 .calandar-prevent::before{

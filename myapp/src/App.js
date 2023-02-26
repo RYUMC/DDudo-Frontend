@@ -19,8 +19,8 @@ function App() {
             <Route path="/DDudo-Frontend" element={<Login_modules />}/>
             <Route path="/DDudo-Frontend/register" element={<Register_modules />} />
           </Route>
-          <Route path="/DDUdo-Fronted/main" element={<Main_page />}>
-            <Route path="/DDUdo-Fronted/main" element={<Main_template />} />
+          <Route path="/DDudo-Frontend/main" element={<Main_page />}>
+            <Route path="/DDudo-Frontend/main" element={<Main_template />} />
           </Route>
         </Routes>
         </Suspense>

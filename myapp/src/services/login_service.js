@@ -21,7 +21,7 @@ export function Login_service(){
     if(response === true){
       localStorage.setItem('user', userID);
       setIsLoggedIn(true);
-      navigate('/DDUdo-Fronted/main');
+      navigate('/DDudo-Frontend/main');
       Swal.fire(`Hi ${userID}!`);
     }
     else{

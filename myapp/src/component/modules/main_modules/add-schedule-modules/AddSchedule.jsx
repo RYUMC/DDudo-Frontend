@@ -1,5 +1,5 @@
 import './AddSchedule.css'
-import { useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { Main_calendar_modules } from '../calendar_modules/Main_calendar_modules'
 
@@ -43,7 +43,6 @@ export function CustomToggle({check, set, color, className}){
     />
   )
 }
-
 
 function AddContent({firstPicker, secondPicker, setFirstPicker, setSecondPicker, firstDate, secondDate}){
 
