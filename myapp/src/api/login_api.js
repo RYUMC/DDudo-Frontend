@@ -18,7 +18,6 @@ export async function ID_duplicate_check_api(id){
   const response = await axios.get(
     URL + id
   )
-  console.log(response.data);
   return response.data.result.duplicated;
 }
 
